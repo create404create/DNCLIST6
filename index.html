@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>US People Search Pro - Reverse Phone Lookup</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="light-theme">
+
+<div class="container">
+  <header>
+    <h1>US People Search Pro</h1>
+    <p>Find name, address, relatives & more</p>
+    <button id="themeToggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+  </header>
+
+  <div class="search-box">
+    <div class="input-wrapper">
+      <input type="text" id="phoneInput" placeholder="Enter 10-digit phone (e.g. 4045094083)" maxlength="12" aria-label="Phone number input" />
+      <button id="clearInput" class="clear-btn hidden"><i class="fas fa-times"></i></button>
+    </div>
+    <button id="searchBtn"><i class="fas fa-search"></i> Search</button>
+  </div>
+
+  <div id="loading" class="hidden">
+    <div class="spinner"></div>
+    <p>Searching database...</p>
+  </div>
+
+  <div id="error" class="hidden"></div>
+
+  <div id="result" class="hidden">
+    <div class="card main-card">
+      <div class="header-row">
+        <h2 id="personName"></h2>
+        <button id="favoriteBtn" title="Add to Favorites"><i class="far fa-star"></i></button>
+      </div>
+      <p id="personStatus"></p>
+      <div class="info-grid">
+        <div><strong>Phone:</strong> <span id="phone"></span></div>
+        <div><strong>Searched:</strong> <span id="searchTime"></span></div>
+        <div><strong>DOB / Age:</strong> <span id="dobAge"></span></div>
+      </div>
+    </div>
+
+    <div class="card collapsible">
+      <h3 onclick="toggleSection(this)">Addresses <i class="fas fa-chevron-down"></i></h3>
+      <div id="addresses" class="section-content"></div>
+    </div>
+
+    <div class="card collapsible">
+      <h3 onclick="toggleSection(this)">Relatives <i class="fas fa-chevron-down"></i></h3>
+      <div id="relatives" class="section-content"></div>
+    </div>
+
+    <div class="actions">
+      <button id="copyBtn"><i class="fas fa-copy"></i> Copy</button>
+      <button id="exportBtn"><i class="fas fa-download"></i> Export TXT</button>
+      <button id="shareBtn"><i class="fas fa-share-alt"></i> Share</button>
+      <button id="newSearch"><i class="fas fa-redo"></i> New</button>
+    </div>
+  </div>
+
+  <div class="history-section">
+    <h3>Recent Searches <button id="clearHistory"><i class="fas fa-trash"></i> Clear</button></h3>
+    <ul id="historyList"></ul>
+    <div id="favoritesSection">
+      <h4>Favorites</h4>
+      <ul id="favoritesList"></ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>Data from uspeoplesearch.site API • For informational use only • <small>Not FCRA compliant</small></p>
+  </footer>
+</div>
+
+<div id="toast" class="hidden">Copied!</div>
+
+<script src="script.js"></script>
+</body>
+</html>
