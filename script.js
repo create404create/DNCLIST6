@@ -1,5 +1,5 @@
 const API_BASE = "https://api.uspeoplesearch.site/v1/?x=";
-const PROXY = "https://api.allorigins.win/raw?url=";
+const PROXY = "https://api.codetabs.com/v1/proxy?quest=";
 
 const phoneInput = document.getElementById('phoneInput');
 const searchBtn = document.getElementById('searchBtn');
@@ -105,9 +105,9 @@ async function searchPhone() {
 
 async function fetchData(phone) {
   const url = API_BASE + phone;
-  const proxy = PROXY + encodeURIComponent(url);
-  const res = await fetch(proxy);
-  if (!res.ok) throw new Error("Network error");
+  const proxyUrl = PROXY + encodeURIComponent(url);
+  const res = await fetch(proxyUrl);
+  if (!res.ok) throw new Error("Network error " + res.status);
   return await res.json();
 }
 
